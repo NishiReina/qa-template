@@ -18,4 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/qa_template', [SlackController::class, "create"])->name('create');
+Route::post('/qa_template', [SlackController::class, "showDialog"])->name('showDialog');
