@@ -14,4 +14,8 @@ use App\Http\Controllers\SlackController;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::post('/qa_template', [SlackController::class, "create"])->name('create');
