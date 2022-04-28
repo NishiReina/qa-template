@@ -33,7 +33,9 @@ class SlackController extends Controller
         $log = json_decode($response->getBody()->getContents(), true);
         Log::info(print_r($log, true));
 
-        return response('',200);
+        return response()->json([
+            'dialog' => json_encode($dialog)
+        ],200);
     }
 
     // 引き継ぎテンプレートのテンプレートを作る
