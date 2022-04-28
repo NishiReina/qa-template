@@ -8,12 +8,11 @@ use Illuminate\Support\Facades\Log;
 
 class SlackController extends Controller
 {
-    //
-    const BOT_TOKEN = 'xoxb-3431016278823-3439267906486-emBdL7Lz9DcJ0ZcabZkVL1Aq';
-
+    
     public function showDialog(Request $request){
+        $bot_token = env('SLACK_TOKEN');
         $url = 'https://slack.com/api/dialog.open';
-        $token = self::BOT_TOKEN;
+        $token = $bot_token;
         $dialog = $this->getDialog();
         $trigger_id = $request->input('trigger_id');
 
