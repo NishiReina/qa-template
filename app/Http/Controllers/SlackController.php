@@ -11,18 +11,17 @@ class SlackController extends Controller
     
     public function showView(Request $request){
         $bot_token = env('SLACK_TOKEN');
-        $url = 'https://slack.com/api/views.open?token='.$bot_token;
-        $token = $bot_token;
+        $url = 'https://slack.com/api/views.open';
         $view = $this->getView();
         $trigger_id = $request->input('trigger_id');
 
         $header = [
             'Content-type' => 'application/json',
-            'Authorization' => "Bearer ".$token
+            'Authorization' => "Bearer ".$bot_token
         ];
 
         $params = [
-            // 'token' => $token,
+            // 'token' => $bot_token,
             'view' =>  json_encode($view),
             'trigger_id' => $trigger_id
         ];
@@ -33,14 +32,15 @@ class SlackController extends Controller
             'POST',
             $url,
             ['headers' => $header],
-            ['query' => $params]
+            ['body' => $params]
         );
 
         $log = json_decode($response->getBody()->getContents(), true);
         Log::info(print_r($log, true));
 
         return response()->json([
-            'log' => $log
+            'log' => $log,
+            'data' => $response
         ],200);
 
         return response('',200);
