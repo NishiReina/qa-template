@@ -31,8 +31,7 @@ class SlackController extends Controller
         $response = $client->request(
             'POST',
             $url,
-            ['headers' => $header],
-            ['body' => $params]
+            ['headers' => $header,'body' => $params]
         );
 
         $log = json_decode($response->getBody()->getContents(), true);
