@@ -9,12 +9,16 @@ use Illuminate\Support\Facades\Log;
 class SlackController extends Controller
 {
     
-    public function showDialog(Request $request){
+    public function showView(Request $request){
         $bot_token = env('SLACK_TOKEN');
         $url = 'https://slack.com/api/views.open';
         $token = $bot_token;
         $view = $this->getView();
         $trigger_id = $request->input('trigger_id');
+
+        $header = [
+            'token' => $token
+        ];
 
         $params = [
             'token' => $token,
@@ -27,6 +31,7 @@ class SlackController extends Controller
         $response = $client->request(
             'POST',
             $url,
+            ['headers' => $header],
             ['query' => $params]
         );
 
@@ -34,7 +39,7 @@ class SlackController extends Controller
         Log::info(print_r($log, true));
 
         return response()->json([
-            'dialog' => $log
+            'log' => $log
         ],200);
 
         return response('',200);
