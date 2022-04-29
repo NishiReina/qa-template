@@ -17,7 +17,8 @@ class SlackController extends Controller
         $trigger_id = $request->input('trigger_id');
 
         $header = [
-            'token' => $token
+            'Content-type' => 'application/json',
+            'Authorization' => "Bearer".$token
         ];
 
         $params = [
