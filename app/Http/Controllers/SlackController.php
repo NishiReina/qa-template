@@ -35,7 +35,7 @@ class SlackController extends Controller
         );
 
         return response()->json([
-            'log' => $log,
+            // 'log' => $log,
             'res' => $response,
             'url' => $url,
             'header' => $header,
