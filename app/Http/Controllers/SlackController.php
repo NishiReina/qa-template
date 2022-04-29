@@ -34,6 +34,14 @@ class SlackController extends Controller
             ['headers' => $header,'body' => $params]
         );
 
+        return response()->json([
+            'log' => $log,
+            'res' => $response,
+            'url' => $url,
+            'header' => $header,
+            'parmas' => $params
+        ],200);
+
         $log = json_decode($response->getBody()->getContents(), true);
         Log::info(print_r($log, true));
 
