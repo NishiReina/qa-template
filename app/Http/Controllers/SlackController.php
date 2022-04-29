@@ -40,7 +40,10 @@ class SlackController extends Controller
 
         return response()->json([
             'log' => $log,
-            'data' => $response
+            'res' => $response,
+            'url' => $url,
+            'header' => $header,
+            'parmas' => $params
         ],200);
 
         return response('',200);
