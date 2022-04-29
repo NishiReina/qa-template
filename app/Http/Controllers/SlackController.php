@@ -18,7 +18,7 @@ class SlackController extends Controller
 
         $params = [
             'token' => $token,
-            'dialog' => json_encode($dialog),
+            'dialog' =>  json_encode($dialog),
             'trigger_id' => $trigger_id
         ];
 
@@ -34,8 +34,10 @@ class SlackController extends Controller
         Log::info(print_r($log, true));
 
         return response()->json([
-            'dialog' => json_encode($dialog)
+            'dialog' => $log
         ],200);
+
+        return response('',200);
     }
 
     // 引き継ぎテンプレートのテンプレートを作る
