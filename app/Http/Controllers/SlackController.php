@@ -10,7 +10,7 @@ class SlackController extends Controller
 {
     
     public function showView(Request $request){
-        $bot_token = env('SLACK_TOKEN');
+        $bot_token = env('SLACK_BOT_TOKEN');
         $url = 'https://slack.com/api/views.open';
         $view = $this->getView();
         $trigger_id = $request->input('trigger_id');
