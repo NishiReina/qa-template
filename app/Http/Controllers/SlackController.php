@@ -21,7 +21,7 @@ class SlackController extends Controller
         ];
 
         $params = [
-            'token' => $token,
+            // 'token' => $token,
             'view' =>  json_encode($view),
             'trigger_id' => $trigger_id
         ];
