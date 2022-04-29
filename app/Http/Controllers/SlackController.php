@@ -11,14 +11,14 @@ class SlackController extends Controller
     
     public function showDialog(Request $request){
         $bot_token = env('SLACK_TOKEN');
-        $url = 'https://slack.com/api/dialog.open';
+        $url = 'https://slack.com/api/views.open';
         $token = $bot_token;
-        $dialog = $this->getDialog();
+        $view = $this->getView();
         $trigger_id = $request->input('trigger_id');
 
         $params = [
             'token' => $token,
-            'dialog' =>  json_encode($dialog),
+            'view' =>  json_encode($view),
             'trigger_id' => $trigger_id
         ];
 
@@ -41,7 +41,7 @@ class SlackController extends Controller
     }
 
     // 引き継ぎテンプレートのテンプレートを作る
-    public function getDialog(){
+    public function getView(){
         return [
             "callback_id" => "yukyu",
             "title" => "休暇申請ダイアログ",
