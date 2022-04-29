@@ -18,7 +18,7 @@ class SlackController extends Controller
 
         $header = [
             'Content-type' => 'application/json',
-            'Authorization' => "Bearer".$token
+            'Authorization' => "Bearer ".$token
         ];
 
         $params = [
